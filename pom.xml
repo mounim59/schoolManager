@@ -5,4 +5,78 @@
   <version>1.0</version>
   <packaging>pom</packaging>
   
+  <properties>
+  	<jee.version>8.0</jee.version>
+  	<java.version>1.8</java.version>
+  	<junit.version>4.13</junit.version>
+  	<plugin.compiler.version>3.8.1</plugin.compiler.version>
+  	<servlet.version>4.0.1</servlet.version>
+  	<jsp.version>2.3.3</jsp.version>
+  	<plugin.war.version>3.3.0</plugin.war.version>
+  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <dependencyManagement>
+  	<dependencies>
+  		<dependency>
+  			<groupId>javax</groupId>
+  			<artifactId>javaee-api</artifactId>
+  			<version>${jee.version}</version>
+  			<scope>provided</scope>
+  		</dependency>
+  		<dependency>
+  			<groupId>junit</groupId>
+  			<artifactId>junit</artifactId>
+  			<version>${junit.version}</version>
+  			<scope>test</scope>
+  		</dependency>
+  		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+		<dependency>
+   			 <groupId>javax.servlet</groupId>
+    		<artifactId>javax.servlet-api</artifactId>
+    		<version>${servlet.version}</version>
+   			 <scope>provided</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api -->
+		<dependency>
+    		<groupId>javax.servlet.jsp</groupId>
+   		    <artifactId>javax.servlet.jsp-api</artifactId>
+    		<version>${jsp.version}</version>
+    		<scope>provided</scope>
+		</dependency>
+		
+  	</dependencies>
+  </dependencyManagement>
+ 
+ <build>
+ 	<pluginManagement>
+ 		<plugins>
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+  				<artifactId>maven-compiler-plugin</artifactId>
+  				<version>${plugin.compiler.version}</version>
+  				<configuration>
+  					<source>${java.version}</source>
+  					<target>${java.version}</target>
+  				</configuration>
+ 			</plugin>
+ 			<plugin>
+  				<groupId>org.apache.maven.plugins</groupId>
+  				<artifactId>maven-war-plugin</artifactId>
+  				<version>${plugin.war.version}</version>
+  				<configuration>
+  					<failOnMissingWebXml>false</failOnMissingWebXml>
+  				</configuration>
+  			</plugin>
+ 		</plugins>
+ 	</pluginManagement>
+ </build> 
+  <modules>
+  	<module>business</module>
+  	<module>dao</module>
+  	<module>entity</module>
+  	<module>iBusiness</module>
+  	<module>iDao</module>
+  	<module>presentation</module>
+  </modules>
 </project>
